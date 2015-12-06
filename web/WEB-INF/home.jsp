@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,7 @@
                     ${requestScope.message}
                 </p>
             </c:if>
+            <a href="<c:url value="/listbook" />">Liste des livres</a> 
             <c:choose>
                 <c:when test="${empty sessionScope.user_session}">
                     <a href="<c:url value="/login" />">Log In</a> 

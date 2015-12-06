@@ -41,6 +41,9 @@ public class BookServlet extends HttpServlet {
                     }
                     RequestDispatcher rd = request.getRequestDispatcher(VIEW_BOOK);
                     rd.forward(request, response);
+                } else {
+                    RequestDispatcher rd = request.getRequestDispatcher(VIEW_HOME);
+                    rd.forward(request, response);
                 }
             } catch (NotBoundException | MalformedURLException | RemoteException e) {
                 System.out.println("Trouble: " + e);

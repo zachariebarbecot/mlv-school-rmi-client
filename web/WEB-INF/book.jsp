@@ -9,7 +9,13 @@
     <body>
         <h1><c:out value="${requestScope.book.getTitle()}" /></h1>
         <h2><c:out value="${requestScope.book.getAuthor()}" /></h2>
+        <h2><c:out value="${requestScope.book.getIsbn()}" /></h2>
         <p><c:out value="${requestScope.book.getCreated()}" /></p>
+        <form method="post">
+            <textarea name="comment"></textarea><br />
+            <input type="hidden" name="isbn" value="${requestScope.book.getIsbn()}" />
+            <input type="submit" value="Submit" />
+        </form>
         <c:if test="${not empty requestScope.commentlist}">
             <p>
                 Comments:<br />

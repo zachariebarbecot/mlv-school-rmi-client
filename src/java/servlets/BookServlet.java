@@ -9,6 +9,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,8 +45,30 @@ public class BookServlet extends HttpServlet {
             } catch (NotBoundException | MalformedURLException | RemoteException e) {
                 System.out.println("Trouble: " + e);
             }
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher(VIEW_HOME);
+            rd.forward(request, response);
         }
-        RequestDispatcher rd = request.getRequestDispatcher(VIEW_HOME);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        if (request.getParameter("comment") != null) {
+            try {
+                long isbn = Long.parseLong(request.getParameter("isbn"));
+                String comment = (String) request.getParameter("comment");
+                ILibrary library = (ILibrary) Naming.lookup("rmi://localhost:1099/library");
+                long range = 1234567L;
+                Random r = new Random();
+                long number = (long) (r.nextDouble() * range);
+                library.createComment(number, isbn, comment);
+            } catch (NotBoundException | MalformedURLException | RemoteException e) {
+                System.out.println("Trouble: " + e);
+            }
+        }
+        RequestDispatcher rd = request.getRequestDispatcher(VIEW_BOOK);
         rd.forward(request, response);
     }
 

@@ -32,6 +32,7 @@
                                         <input type="hidden" name="isbn" value="${book.getIsbn()}" />
                                         <input type="submit" value="Rendre" />
                                     </form>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>

@@ -17,11 +17,4 @@ public class HomeServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher(VIEW_HOME);
         rd.forward(request, response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher(VIEW_HOME);
-        rd.forward(request, response);
-    }
 }

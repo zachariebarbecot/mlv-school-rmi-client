@@ -6,7 +6,22 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Log In</title>
     </head>
-    <body>
+    <body style="width: 800px; margin: 0 auto; text-align: center;">
+        <nav>
+            <ul>
+                <li><a href="<c:url value="/" />">Home</a></li>
+                <c:choose>
+                    <c:when test="${empty sessionScope.user_session}">
+                        <li><a href="<c:url value="/login" />">Log In</a></li>
+                        </c:when>
+                        <c:otherwise>
+                        <li><a href="<c:url value="/catalog" />">Catalogue</a></li>
+                        <li><a href="<c:url value="/reservation" />">Mes réservations</a></li>
+                        <li><a href="<c:url value="/logout" />">Log Out</a></li>
+                        </c:otherwise>
+                    </c:choose>
+            </ul>
+        </nav>
         <section>
             <c:if test="${not empty requestScope.message}">
                 <p>

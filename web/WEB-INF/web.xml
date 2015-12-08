@@ -21,8 +21,8 @@
         <servlet-class>servlets.BookServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListBookServlet</servlet-name>
-        <servlet-class>servlets.ListBookServlet</servlet-class>
+        <servlet-name>CatalogServlet</servlet-name>
+        <servlet-class>servlets.CatalogServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ReserverServlet</servlet-name>
@@ -53,8 +53,8 @@
         <url-pattern>/book</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListBookServlet</servlet-name>
-        <url-pattern>/listbook</url-pattern>
+        <servlet-name>CatalogServlet</servlet-name>
+        <url-pattern>/catalog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ReserverServlet</servlet-name>

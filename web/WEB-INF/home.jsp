@@ -6,24 +6,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
     </head>
-    <body>
+    <body style="width: 800px; margin: 0 auto; text-align: center;">
         <h1>Home</h1>
+        <c:if test="${not empty requestScope.message}">
+            <p>
+                ${requestScope.message}
+            </p>
+        </c:if>
         <nav>
-            <c:if test="${not empty requestScope.message}">
-                <p>
-                    ${requestScope.message}
-                </p>
-            </c:if>
-            <a href="<c:url value="/listbook" />">Liste des livres</a> 
-            <c:choose>
-                <c:when test="${empty sessionScope.user_session}">
-                    <a href="<c:url value="/login" />">Log In</a> 
-                </c:when>
-                <c:otherwise>
-                    <a href="<c:url value="/reservation" />">Reservation</a> 
-                    <a href="<c:url value="/logout" />">Log Out</a> 
-                </c:otherwise>
-            </c:choose>
+            <ul>
+                <li><a href="<c:url value="/" />">Home</a></li>
+                <c:choose>
+                    <c:when test="${empty sessionScope.user_session}">
+                        <li><a href="<c:url value="/login" />">Log In</a></li>
+                        </c:when>
+                        <c:otherwise>
+                        <li><a href="<c:url value="/catalog" />">Catalogue</a></li>
+                        <li><a href="<c:url value="/reservation" />">Mes réservations</a></li>
+                        <li><a href="<c:url value="/logout" />">Log Out</a></li>
+                        </c:otherwise>
+                    </c:choose>
+            </ul>
         </nav>
         <c:if test="${not empty sessionScope.user_session}">
             <section>

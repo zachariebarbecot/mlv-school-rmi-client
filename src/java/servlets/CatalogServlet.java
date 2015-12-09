@@ -38,9 +38,10 @@ public class CatalogServlet extends HttpServlet {
             }
             RequestDispatcher rd = request.getRequestDispatcher(VIEW_CATALOG);
             rd.forward(request, response);
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher(VIEW_HOME);
+            rd.forward(request, response);
         }
-        RequestDispatcher rd = request.getRequestDispatcher(VIEW_HOME);
-        rd.forward(request, response);
     }
 
     @Override

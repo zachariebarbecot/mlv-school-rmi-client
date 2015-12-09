@@ -9,6 +9,14 @@
     <message name="catalogResponse"/>
     <message name="available"/>
     <message name="availableResponse"/>
+    <message name="addToCart"/>
+    <message name="addToCartResponse"/>
+    <message name="removeToCart"/>
+    <message name="removeToCartResponse"/>
+    <message name="getPriceCart"/>
+    <message name="getPriceCartResponse"/>
+    <message name="intiCatalog"/>
+    <message name="intiCatalogResponse"/>
     <portType name="MLVBibService">
         <operation name="catalog">
             <input message="tns:catalog"/>
@@ -18,6 +26,22 @@
             <input message="tns:available"/>
             <output message="tns:availableResponse"/>
         </operation>
+        <operation name="addToCart">
+            <input message="tns:addToCart"/>
+            <output message="tns:addToCartResponse"/>
+        </operation>
+        <operation name="removeToCart">
+            <input message="tns:removeToCart"/>
+            <output message="tns:removeToCartResponse"/>
+        </operation>
+        <operation name="getPriceCart">
+            <input message="tns:getPriceCart"/>
+            <output message="tns:getPriceCartResponse"/>
+        </operation>
+        <operation name="intiCatalog">
+            <input message="tns:intiCatalog"/>
+            <output message="tns:intiCatalogResponse"/>
+        </operation>
     </portType>
     <binding name="MLVBibServicePortBinding" type="tns:MLVBibService">
         <wsp:PolicyReference URI="#MLVBibServicePortBindingPolicy"/>
@@ -26,6 +50,22 @@
             <output/>
         </operation>
         <operation name="available">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="addToCart">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="removeToCart">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getPriceCart">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="intiCatalog">
             <input/>
             <output/>
         </operation>
@@ -79,6 +119,30 @@
         </wsp:ExactlyOne>
     </wsp:Policy>
     <wsp:Policy wsu:Id="MLVBibServicePortBinding_available_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="MLVBibServicePortBinding_init_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="MLVBibServicePortBinding_init_Output_Policy">
         <wsp:ExactlyOne>
             <wsp:All>
                 <sp:EncryptedParts>

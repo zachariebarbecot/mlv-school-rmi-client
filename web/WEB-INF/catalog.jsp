@@ -34,6 +34,7 @@
                     <th>ISBN</th>
                     <th>Title</th>
                     <th>Author</th>
+                    <th>Created</th>
                     <th>Reserver</th>
                 </tr>
             </thead>
@@ -43,6 +44,7 @@
                         <td><c:out value="${book.getIsbn()}" /></td>
                         <td><a href="<c:url value="/book?isbn=${book.getIsbn()}" />"><c:out value="${book.getTitle()}" /></a></td>
                         <td><c:out value="${book.getAuthor()}" /></td>
+                        <td><c:out value="${book.getCreated()}" /></td>
                         <td>
                             <c:if test="${not empty sessionScope.user_session}">
                                 <form method="post" action="reserver">

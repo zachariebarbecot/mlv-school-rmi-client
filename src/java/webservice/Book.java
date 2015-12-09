@@ -1,23 +1,15 @@
 package webservice;
 
-import api.IBook;
-import java.rmi.RemoteException;
-import java.util.Random;
+import java.io.Serializable;
 
-public class Book {
+public class Book implements Serializable {
 
     private long isbn;
     private String title;
     private String author;
     private double price;
 
-    public Book(IBook book) throws RemoteException {
-        this.isbn = book.getIsbn();
-        this.title = book.getTitle();
-        this.author = book.getAuthor();
-        Random r = new Random();
-        double p = 0.99 + (r.nextDouble() * (19.99 - 0.99));
-        this.price = p;
+    public Book() {
     }
 
     public long getIsbn() {
@@ -48,7 +40,7 @@ public class Book {
         return price;
     }
 
-    public void setPrix(double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

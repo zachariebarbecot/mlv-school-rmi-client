@@ -116,4 +116,16 @@ public class MLVBibService {
     public synchronized List<Book> getCart() {
         return cart.getItems();
     }
+
+    @WebMethod(operationName = "buyBooksInCart")
+    public boolean buyBooksInCart() {
+        Banque bankService = new Banque_Service().getBanquePort();
+        double totalPrice = getPriceCart();
+
+        System.out.println("Solde : " + bankService.solde() + " total Price Cart : " + totalPrice);
+        if (!bankService.debit("EUR", totalPrice)) {
+            return false;
+        }
+        return buyCart();
+    }
 }

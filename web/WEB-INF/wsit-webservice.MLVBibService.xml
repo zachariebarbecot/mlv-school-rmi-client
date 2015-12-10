@@ -17,6 +17,8 @@
     <message name="getPriceCartResponse"/>
     <message name="intiCatalog"/>
     <message name="intiCatalogResponse"/>
+    <message name="buyBooksInCart"/>
+    <message name="buyBooksInCartResponse"/>
     <portType name="MLVBibService">
         <operation name="catalog">
             <input message="tns:catalog"/>
@@ -42,6 +44,10 @@
             <input message="tns:intiCatalog"/>
             <output message="tns:intiCatalogResponse"/>
         </operation>
+        <operation name="buyBooksInCart">
+            <input message="tns:buyBooksInCart"/>
+            <output message="tns:buyBooksInCartResponse"/>
+        </operation>
     </portType>
     <binding name="MLVBibServicePortBinding" type="tns:MLVBibService">
         <wsp:PolicyReference URI="#MLVBibServicePortBindingPolicy"/>
@@ -66,6 +72,10 @@
             <output/>
         </operation>
         <operation name="intiCatalog">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="buyBooksInCart">
             <input/>
             <output/>
         </operation>

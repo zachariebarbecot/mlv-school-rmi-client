@@ -9,16 +9,16 @@
     <body style="width: 800px; margin: 0 auto; text-align: center;">
         <h1>Book</h1>
         <nav>
-            <ul>
-                <li><a href="<c:url value="/" />">Home</a></li>
+            <ul style="display: inline-block; font-weight: bold;">
+                <li style="display: inline-block"><a href="<c:url value="/" />">Home</a></li>
                     <c:choose>
                         <c:when test="${empty sessionScope.user_session}">
-                        <li><a href="<c:url value="/login" />">Log In</a></li>
+                        <li style="display: inline-block"><a href="<c:url value="/login" />">Log In</a></li>
                         </c:when>
                         <c:otherwise>
-                        <li><a href="<c:url value="/catalog" />">Catalogue</a></li>
-                        <li><a href="<c:url value="/reservation" />">Mes réservations</a></li>
-                        <li><a href="<c:url value="/logout" />">Log Out</a></li>
+                        <li style="display: inline-block"><a href="<c:url value="/catalog" />">Catalogue</a></li>
+                        <li style="display: inline-block"><a href="<c:url value="/reservation" />">Mes réservations</a></li>
+                        <li style="display: inline-block"><a href="<c:url value="/logout" />">Log Out</a></li>
                         </c:otherwise>
                     </c:choose>
             </ul>

@@ -10,7 +10,6 @@ import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -29,14 +28,12 @@ public class MLVBibService {
             library.findBookAll().forEach((book) -> {
                 try {
                     int year = LocalDateTime.now().getYear() - book.getCreated().getYear();
-                    if (book.getCounter() >= 1 && year >= 2) {
+                    if (book.getCounter() >= 1 && year >= 2 && library.findLoanByIsbn(book.getIsbn()) == null) {
                         Book b = new Book();
                         b.setIsbn(book.getIsbn());
                         b.setTitle(book.getTitle());
                         b.setAuthor(book.getAuthor());
-                        Random r = new Random();
-                        double p = 0.99 + (r.nextDouble() * (19.99 - 0.99));
-                        b.setPrice(p);
+                        b.setPrice(5.99);
                         catalog.add(b);
                     }
                 } catch (RemoteException e) {
@@ -51,10 +48,7 @@ public class MLVBibService {
 
     @WebMethod(operationName = "catalog")
     public synchronized List<Book> getCatalog() {
-        if (catalog.isEmpty()) {
-            return initCatalog();
-        }
-        return catalog;
+        return initCatalog();
     }
 
     @WebMethod(operationName = "available")

@@ -46,8 +46,9 @@ public class ReserverServlet extends HttpServlet {
                     System.out.println("Trouble: " + e);
                 }
             }
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher(VIEW_BOOKLIST);
+            rd.forward(request, response);
         }
-        RequestDispatcher rd = request.getRequestDispatcher(VIEW_BOOKLIST);
-        rd.forward(request, response);
     }
 }

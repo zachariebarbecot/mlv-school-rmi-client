@@ -5,6 +5,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Catalogue</title>
+        <style>
+            table {border: 1px solid black; border-collapse: collapse; margin: 0 auto}
+            td {border: 1px solid black;}
+        </style>
     </head>
     <body style="width: 800px; margin: 0 auto; text-align: center;">
         <h1>Catalogue</h1>
@@ -14,16 +18,16 @@
             </p>
         </c:if>
         <nav>
-            <ul>
-                <li><a href="<c:url value="/" />">Home</a></li>
+            <ul style="display: inline-block; font-weight: bold;">
+                <li style="display: inline-block"><a href="<c:url value="/" />">Home</a></li>
                     <c:choose>
                         <c:when test="${empty sessionScope.user_session}">
-                        <li><a href="<c:url value="/login" />">Log In</a></li>
+                        <li style="display: inline-block"><a href="<c:url value="/login" />">Log In</a></li>
                         </c:when>
                         <c:otherwise>
-                        <li><a href="<c:url value="/catalog" />">Catalogue</a></li>
-                        <li><a href="<c:url value="/reservation" />">Mes réservations</a></li>
-                        <li><a href="<c:url value="/logout" />">Log Out</a></li>
+                        <li style="display: inline-block"><a href="<c:url value="/catalog" />">Catalogue</a></li>
+                        <li style="display: inline-block"><a href="<c:url value="/reservation" />">Mes réservations</a></li>
+                        <li style="display: inline-block"><a href="<c:url value="/logout" />">Log Out</a></li>
                         </c:otherwise>
                     </c:choose>
             </ul>
@@ -34,6 +38,7 @@
                     <th>ISBN</th>
                     <th>Title</th>
                     <th>Author</th>
+                    <th>Counter</th>
                     <th>Created</th>
                     <th>Reserver</th>
                 </tr>
@@ -44,6 +49,7 @@
                         <td><c:out value="${book.getIsbn()}" /></td>
                         <td><a href="<c:url value="/book?isbn=${book.getIsbn()}" />"><c:out value="${book.getTitle()}" /></a></td>
                         <td><c:out value="${book.getAuthor()}" /></td>
+                        <td><c:out value="${book.getCounter()}" /></td>
                         <td><c:out value="${book.getCreated()}" /></td>
                         <td>
                             <c:if test="${not empty sessionScope.user_session}">

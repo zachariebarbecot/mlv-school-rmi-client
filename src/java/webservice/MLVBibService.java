@@ -128,4 +128,9 @@ public class MLVBibService {
         }
         return buyCart();
     }
+
+    @WebMethod(operationName = "emptyCart")
+    public void emptyCart() {
+        cart.getItems().clear();
+    }
 }

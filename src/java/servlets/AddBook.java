@@ -41,8 +41,9 @@ public class AddBook extends HttpServlet {
             } catch (NotBoundException | MalformedURLException | RemoteException e) {
                 System.out.println("Trouble: " + e);
             }
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher(VIEW_HOME);
+            rd.forward(request, response);
         }
-        RequestDispatcher rd = request.getRequestDispatcher(VIEW_HOME);
-        rd.forward(request, response);
     }
 }

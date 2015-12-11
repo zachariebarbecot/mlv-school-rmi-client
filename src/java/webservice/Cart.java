@@ -1,6 +1,8 @@
 package webservice;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +28,17 @@ public class Cart implements Serializable {
     }
 
     public double getPriceCart() {
-        double total = 0.0;
+        double total = 0.00;
         if (!items.isEmpty()) {
             for (Book b : items) {
                 total += b.getPrice();
             }
         }
-        return total;
+        DecimalFormat twoDForm = new DecimalFormat("#0.00");
+        DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+        dfs.setDecimalSeparator('.');
+        twoDForm.setDecimalFormatSymbols(dfs);
+        return Double.parseDouble(twoDForm.format(total));
     }
 
     public List<Book> getItems() {

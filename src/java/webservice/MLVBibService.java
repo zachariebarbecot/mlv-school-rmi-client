@@ -27,8 +27,7 @@ public class MLVBibService {
             ILibrary library = (ILibrary) Naming.lookup("rmi://localhost:1099/library");
             library.findBookAll().forEach((book) -> {
                 try {
-                    int year = LocalDateTime.now().getYear() - book.getCreated().getYear();
-                    if (book.getCounter() >= 1 && year >= 2 && library.findLoanByIsbn(book.getIsbn()) == null) {
+                    if (isAvailable(book.getIsbn())) {
                         Book b = new Book();
                         b.setIsbn(book.getIsbn());
                         b.setTitle(book.getTitle());
